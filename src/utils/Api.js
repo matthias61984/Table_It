@@ -52,7 +52,7 @@ export default {
         return axios.post(getUrl("/api/users") , userData).then(res => res);
     },
 
-    updateUser : function(id , userData) {
+    updateFavorites : function(id , userData) {
         return axios.put("/api/users/" + id , userData);
     },
 

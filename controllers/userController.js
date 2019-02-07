@@ -1,4 +1,3 @@
-
 const dbUser = require("../models/user");
 
 module.exports = {
@@ -15,6 +14,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
+    console.log(req.body)
     dbUser
       .create({
         username : req.body.username,
@@ -24,9 +24,9 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  update: function(req, res) {
+  updateFavorites: function(req, res) {
     dbUser
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ _id: req.params.id }, {$addToSet : {favorites : req.body}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
     },

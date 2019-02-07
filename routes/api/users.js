@@ -10,7 +10,7 @@ router.route("/users/login/:username").get(userController.findUserbyUsername);
 
 router.route("/users/:id")
 .get(userController.findById)
-.put(userController.update)
+.put(userController.updateFavorites)
 .delete(userController.remove);
 
 router.route("/users/favorites/:id")
