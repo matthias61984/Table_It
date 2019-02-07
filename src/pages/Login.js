@@ -33,7 +33,8 @@ class Login extends Component {
        username : "",
        password : "",
        email : "",
-       favorites : []
+       favorites : [],
+       id : ""
      };
      const that = this;
      Api.getUserbyUsername(this.state.username)
@@ -42,6 +43,7 @@ class Login extends Component {
         user.password = data.password;
         user.email = data.email;
         user.favorites = data.favorites;
+        user.id = data._id
         if(user)
         {
    
@@ -49,6 +51,7 @@ class Login extends Component {
           console.log(this.state);
           if(user.password === that.state.password)
           {
+            localStorage.setItem("userID" , user.id);
             this.props.history.push('/discover');
           }
           else

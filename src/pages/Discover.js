@@ -5,8 +5,9 @@ import Card from "../components/Card";
 import Alert from "../components/Alert";
 import InfoTop from "../components/InfoTop";
 import InfoBot from "../components/InfoBot";
+import Api from "../utils/Api";
 
-class Discover extends Component { 
+class Discover extends Component {
   state = {
     restArray: [],
     image: "",
@@ -16,11 +17,15 @@ class Discover extends Component {
     price: "",
     rating: "",
     count: 0,
-    favorited: false
+    favorited: false,
+    userID : ""
   };
 
   componentDidMount() {
     this.saveArray();
+    this.setState ({
+      userID : localStorage.getItem("userID")
+    })
   };
 
   handleBtnClick = event => {
@@ -29,6 +34,8 @@ class Discover extends Component {
     newState.count++;
     if (btnType === "pick") {
       newState.favorited = true;
+      //console.log(this.state.userID , this.state.restArray[this.state.count].R.res_id);
+      Api.updateFavorites(this.state.userID , {resId : this.state.restArray[this.state.count].R.res_id});
     } else {
       newState.favorited = false;
     }
