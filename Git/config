@@ -1,0 +1,16 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/matthias61984/Table-It.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "AddingFiles"]
+	remote = origin
+	merge = refs/heads/AddingFiles
+[remote "heroku"]
+	url = https://git.heroku.com/table-testing.git
+	fetch = +refs/heads/*:refs/remotes/heroku/*
