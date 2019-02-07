@@ -35,6 +35,16 @@ export default {
             console.log("axios error:", error);
         });
     },
+    
+    getRestaurantByID : function(resID) {
+        return axios.get("https://developers.zomato.com/api/v2.1/restaurant?res_id=" + resID , {config})
+        .then((response) => {
+            return response;
+        })
+        .catch((error) => {
+            console.log("axios error:" , error);
+        });
+    },
 
     getUserbyUsername: function(username) {
         return axios.get("/api/users/login/" + username);
