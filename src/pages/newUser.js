@@ -77,7 +77,7 @@ class newUser extends Component {
               placeholder = "Email"
               />
           <button onClick = {this.handleFormSubmit}> Create New User </button>
-          <a href = "/"> Already a user ? </a>
+          <a href = "/" className="createLink"> Already a user ? </a>
         </form>
         </Jumbotron>
       </div>

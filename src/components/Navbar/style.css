@@ -1,5 +1,18 @@
 nav.navbar.navbar-default {
-  margin-bottom: 0;
+	margin-bottom: 0;
+	background: black;
+}
+
+.navbar-brand {
+	font-size: 32px;
+	line-height: 32px;
+	text-decoration: none;
+	font-family: sans-serif;
+	color: black;
+}
+
+img {
+	width: 10%;
 }
 
 li {
@@ -13,6 +26,27 @@ li {
 }
 
 li:hover {
-	background: rgba(255,255,255,.9);
-  color: black;
+	background: rgba(0,0,0,.9);
+  color: white;
+}
+
+.nav-link:hover {
+	color:black;
+}
+
+.navbar-nav {
+	background:black;
+	border: 10px solid black;
+}
+
+.nav-link:visited {
+	color:red;
+}
+
+.nav-item:hover {
+	background:white;
+}
+
+.nav-item:active {
+	color:white;
 }

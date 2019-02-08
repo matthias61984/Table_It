@@ -75,9 +75,7 @@ class Discover extends Component {
       <div>
         <Navbar />
         <h1 className="text-center">Find New Restaurants!</h1>
-        <h3 className="text-center">
-          Thumbs up to save restaurant to your favorites
-        </h3>
+        <h3 className="text-center">Thumbs up to save restaurant to your favorites</h3>
         <InfoTop name={this.state.name} cuisine={this.state.cuisine}></InfoTop>
         <Card image={this.state.image} handleBtnClick={this.handleBtnClick} />
         <InfoBot address={this.state.address} price={this.state.price} rating={this.state.rating}></InfoBot>
