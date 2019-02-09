@@ -16,7 +16,6 @@ componentDidMount() {
     for(var i = 0; i < data.length; i++) {
     userFavs.push(data[i].resId);
     Api.getRestaurantByID(data[i].resId).then(({data}) => {
-      console.log({...this.state.faveArray});
       const joined = this.state.faveArray.concat(data);
       this.setState({
         faveArray : joined
@@ -32,8 +31,8 @@ render() {
     <Navbar />
       <div className="container">
       {this.state.faveArray.map(item => (
-        <div className="list-group-item row favdiv" key={item.id}>
-          <img src={item.featured_image} alt="restaurant pic" className="offset-md-1 col-md-2"></img>
+        <div className="list-group-item row favdiv animated bounceInRight" key={item.id}>
+          <img src={item.featured_image} alt="Restaurant hasn't provided a featured image!" className="offset-md-1 col-md-2"></img>
           <div className="col">
             <p>Restaurant Name: {item.name}</p>
             <p>Address: {item.location.address}</p>
