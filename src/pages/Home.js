@@ -19,13 +19,6 @@ function Home() {
             <h1>Welcome To TabeIt!</h1>
           </Col>
         </Row>
-        <Row>
-          <Col size="md-12">
-            <p>
-              Yolo #swagginainteasy
-            </p>
-          </Col>
-        </Row>
       </Container>
     </div>
   );

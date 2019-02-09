@@ -3,6 +3,7 @@
     background-size: cover;
     background-position: center;
     position: relative;
+    margin-top:5%;
   }
   
 .jumbotron::after {
@@ -31,4 +32,5 @@
     padding-top: 140px;
     margin-top: 0;
   }
+
   

@@ -11,3 +11,19 @@ div[data-reactroot] {
   padding: 0;
   margin: 0;
 }
+
+form {
+  padding: 10px;
+  background-color: white;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+input {
+  margin: 5px;
+}
+
+.createLink {
+  text-decoration: none;
+  margin: 10px;
+}
