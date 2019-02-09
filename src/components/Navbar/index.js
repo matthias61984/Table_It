@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import image from "../../public/images/tableItIcon.png";
+import image from "./tableItIcon.png";
 import "./style.css";
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
@@ -8,20 +8,19 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light" id="Nav">
       <div className="row">
-        <img src={image} alt="knife and fork icon" className="col-md-2" />
-        <Link className="navbar-brand col-md-4" to="/">
+        <img src={image} alt="knife and fork icon" className="col-md-2 tableiticon" />
+        <Link className="navbar-brand col-md-2 animated fadeIn" to="/">
           TableIt
         </Link>
-      </div>
-      <div>
+      <div className="col-md-8">
         <ul className="navbar-nav">
           <li className="nav-item">
             <Link
               to="/"
               className={
                 window.location.pathname === "/" || window.location.pathname === "/"
-                  ? "nav-link active"
-                  : "nav-link"
+                ? "nav-link active"
+                : "nav-link"
               }>
               Home
             </Link>
@@ -42,6 +41,7 @@ function Navbar() {
             </Link>
           </li>
         </ul>
+      </div>
       </div>
     </nav>
   );

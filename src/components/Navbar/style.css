@@ -16,30 +16,36 @@ img {
 }
 
 li {
-  text-decoration: none;
-  color: white;
+  	text-decoration: none;
+  	color: white;
 	position: relative;
 	display: inline-block;
 	font-size: 13px;
 	line-height: 40px;
 	padding: 0 2em;
+	background: grey;
 }
 
 li:hover {
 	background: rgba(0,0,0,.9);
-  color: white;
+  	color: white;
 }
 
-.nav-link:hover {
-	color:black;
+a {
+	color: white;
 }
+
+/* .nav-link:hover {
+	color:black;
+} */
 
 .navbar-nav {
 	background:black;
 	border: 10px solid black;
+	display: inline-block;
 }
 
-.nav-link:visited {
+.nav-:visited {
 	color:red;
 }
 

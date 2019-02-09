@@ -80,7 +80,7 @@ class Login extends Component {
           <h1>TableIt</h1>
           <h2>Find dinner tonight... and tomorrow night.</h2>
         <div className="row">
-          <div className="offset-md-2 col-md-5">
+          <div className="offset-md-3 col-md-6">
             <form className="form">
               <input
                 value = {this.state.username}

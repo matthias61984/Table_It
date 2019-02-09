@@ -30,3 +30,11 @@ input {
   margin: 5px;
 
 }
+
+.tableiticon {
+  max-height: 100px;
+}
+
+li {
+  color: white;
+}
