@@ -2,11 +2,7 @@
   box-sizing: border-box;
 }
 
-html,
-body,
-#root,
-#root > div,
-div[data-reactroot] {
+html, body, #root, #root > div, div[data-reactroot] {
   height: 100%;
   padding: 0;
   margin: 0;
@@ -26,4 +22,11 @@ input {
 .createLink {
   text-decoration: none;
   margin: 10px;
+}
+
+.favdiv {
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 5px;
+
 }

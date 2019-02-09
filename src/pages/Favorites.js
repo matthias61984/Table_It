@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import API from "../utils/Api";
 import Navbar from "../components/Navbar";
-import Container from "../components/Container";
+import Favcard from "../components/Favcard";
 import Api from "../utils/Api";
 
 
@@ -15,29 +14,36 @@ componentDidMount() {
   const userFavs = [];
   Api.getFavorites(localStorage.getItem("userID")).then( ({data}) => {
     for(var i = 0; i < data.length; i++) {
-    //userFavs.push(data[i].resId);
+    userFavs.push(data[i].resId);
     Api.getRestaurantByID(data[i].resId).then(({data}) => {
+      console.log({...this.state.faveArray});
       const joined = this.state.faveArray.concat(data);
       this.setState({
         faveArray : joined
       })
     });
-  }
-})};
+    }
+  })
+};
 
 render() {
   return(
     <div>
     <Navbar />
-      <Container style={{ marginTop: 30 }}>
-      <ul>
-      {/* {props.groceries.map(item => (
-        <li className="list-group-item" key={item.id}>
-          {item.name}
-        </li>
-      ))} */}
-        </ul>
-      </Container>
+      <div className="container">
+      {this.state.faveArray.map(item => (
+        <div className="list-group-item row favdiv" key={item.id}>
+          <img src={item.featured_image} alt="restaurant pic" className="offset-md-1 col-md-2"></img>
+          <div className="col">
+            <p>Restaurant Name: {item.name}</p>
+            <p>Address: {item.location.address}</p>
+            <p>Cuisine: {item.cuisines}</p>
+            <p>Average price for two: {item.average_cost_for_two}</p>
+            <p>Rating: {item.user_rating.aggregate_rating}</p>
+          </div>
+        </div>
+      ))}
+      </div>
     </div>
   );
 }
