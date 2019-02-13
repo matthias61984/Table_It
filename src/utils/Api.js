@@ -21,9 +21,12 @@ const getUrl = function(endPoint) {
     // }
 }
 
+
+
+
 export default {
-    getRandomRestaurantArray: function() {
-    return axios.get("https://developers.zomato.com/api/v2.1/search?entity_id=302&entity_type=city&count=20&sort=rating", {config})
+    getRandomRestaurantArray: function(lat , long) {
+    return axios.get("https://developers.zomato.com/api/v2.1/search?lat=" + lat + "&lon=" + long , {config})
         .then((response) => {
             const randomRestArray = [];
             for(var i = 0; i < 20; i++) {
