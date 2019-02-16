@@ -23,7 +23,7 @@ class Discover extends Component {
 
   componentDidMount() {
     
-    if(localStorage.getItem("userId") === null)
+    if(localStorage.getItem("userID") === null)
     {
       this.props.history.push('/');
     }
