@@ -15,10 +15,12 @@ class Favorites extends Component {
   };
 
 componentDidMount() {
-  const userFavs = [];
+  if(localStorage.getItem("userId") === null)
+  {
+    this.props.history.push('/');
+  }
   Api.getFavorites(localStorage.getItem("userID")).then( ({data}) => {
     for(var i = 0; i < data.length; i++) {
-    userFavs.push(data[i].resId);
     Api.getRestaurantByID(data[i].resId).then(({data}) => {
       const joined = this.state.faveArray.concat(data);
       this.setState({
@@ -27,11 +29,7 @@ componentDidMount() {
       const cuis = data.cuisines.split(", ");
       for(var i = 0; i < cuis.length; i++)
       {
-        if(this.state.cuisines.includes(cuis[i]))
-        {
-
-        }
-        else
+        if(!(this.state.cuisines.includes(cuis[i])))
         {
           const newCuis = this.state.cuisines.concat({id : cuis.length, type : cuis[i]});
           this.setState({
