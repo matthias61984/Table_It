@@ -22,7 +22,7 @@ function Navbar() {
                 ? "nav-link active"
                 : "nav-link"
               }>
-              Home
+              Logout
             </Link>
           </li>
           <li className="nav-item">

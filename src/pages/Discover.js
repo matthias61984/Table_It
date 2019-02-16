@@ -22,10 +22,36 @@ class Discover extends Component {
   };
 
   componentDidMount() {
-    this.saveArray();
+    
+    if(localStorage.getItem("userID") === null)
+    {
+      this.props.history.push('/');
+    }
+    if(navigator.geolocation)
+    {
+      navigator.geolocation.getCurrentPosition(position => {
+        const pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        this.saveArray(pos.lat , pos.lng);
+      })
+    }
+    else
+    {
+      const pos = {
+        lat : 32.7157,
+        lng : 117.1611
+      };
+      this.saveArray(pos.lat , pos.lng);
+    }
+    
     this.setState ({
       userID : localStorage.getItem("userID")
-    })
+    });
+    
+
+    
   };
 
   handleBtnClick = event => {
@@ -65,8 +91,8 @@ class Discover extends Component {
     }
   };
 
-  saveArray = () => {
-    return API.getRandomRestaurantArray()
+  saveArray = (lat , long) => {
+    return API.getRandomRestaurantArray(lat , long)
     .then(res => {
       return this.setState(pvSt=>{
         return ({...pvSt, restArray: res.map(item=>({...item.restaurant}))})
