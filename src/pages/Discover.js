@@ -107,11 +107,15 @@ class Discover extends Component {
     return (
       <div>
         <Navbar />
-        <h1 className="text-center">Find New Restaurants!</h1>
-        <h3 className="text-center">Thumbs up to save restaurant to your favorites</h3>
-        <InfoTop name={this.state.name} cuisine={this.state.cuisine}></InfoTop>
-        <Card image={this.state.image} handleBtnClick={this.handleBtnClick} />
-        <InfoBot address={this.state.address} price={this.state.price} rating={this.state.rating}></InfoBot>
+        <InfoTop name={this.state.name}></InfoTop>
+        <div className="row">
+          <div className="offset-md-4 col-md-4">
+            <Card image={this.state.image} handleBtnClick={this.handleBtnClick} />
+          </div>
+          <div className="col-md-3 justify-content-left">
+            <InfoBot cuisine={this.state.cuisine} address={this.state.address} price={this.state.price} rating={this.state.rating}></InfoBot>
+          </div>
+        </div>
         <Alert style={{ opacity: this.state.favorited ? 1 : 0 }} type="success">
           Restaurant added to favorites list!
         </Alert>

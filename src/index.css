@@ -8,6 +8,10 @@ html, body, #root, #root > div, div[data-reactroot] {
   margin: 0;
 }
 
+body {
+  background-image: url("./prism.png")
+}
+
 form {
   padding: 10px;
   background-color: white;
@@ -24,17 +28,31 @@ input {
   margin: 10px;
 }
 
+.cuisBtnDiv {
+  float: left;
+  margin: 0px 5px 10px 5px;
+}
+
 .favdiv {
+  clear: left;
   border: 2px solid black;
   border-radius: 5px;
-  margin: 5px;
+  margin: 10px;
+}
 
+.favImg {
+  max-height: 180px;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 0;
+  margin-top: 10px;
+}
+
+h5 {
+  margin: 10px 0;
 }
 
 .tableiticon {
   max-height: 100px;
 }
 
-li {
-  color: white;
-}

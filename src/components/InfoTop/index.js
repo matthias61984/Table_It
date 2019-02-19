@@ -3,9 +3,8 @@ import "./style.css";
 
 function InfoTop (props) {
     return (
-        <div>
-            <h2>Restaurant Name: {props.name}</h2>
-            <p>Cuisine: {props.cuisine}</p>
+        <div className="offset-md-3 col-md-6 infoTopDiv">
+            <h2 className="text-center">{props.name}</h2>
         </div>
     )
 }

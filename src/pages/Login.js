@@ -97,8 +97,8 @@ class Login extends Component {
                 type = "password"
                 placeholder = "Password"
               />
-              <button onClick = {this.handleFormSubmit}> Log-In </button>
-              <a href = "/createUser" className="createLink"> Create a User </a>
+              <button onClick = {this.handleFormSubmit} className="btn btn-success"> Log-In </button>
+              <a href = "/createUser" className="createLink">Create a User </a>
             </form>
           </div>
         </div>

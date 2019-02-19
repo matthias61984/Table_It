@@ -3,16 +3,22 @@ nav.navbar.navbar-default {
 	background: black;
 }
 
+nav.navbar {
+	background-color: grey;
+	margin: 25px;
+	border-radius: 5px;
+}
+
 .navbar-brand {
 	font-size: 32px;
 	line-height: 32px;
-	text-decoration: none;
 	font-family: sans-serif;
-	color: black;
 }
 
 img {
-	width: 10%;
+	max-width: 80px;
+	height: auto;
+	border-radius: 5px;
 }
 
 li {
@@ -24,35 +30,26 @@ li {
 	line-height: 40px;
 	padding: 0 2em;
 	background: grey;
+	border-radius: 5px;
+	margin: 10px;
 }
 
 li:hover {
-	background: rgba(0,0,0,.9);
-  	color: white;
+	background: white;
+  	color: black;
 }
-
-a {
-	color: white;
-}
-
-/* .nav-link:hover {
-	color:black;
-} */
 
 .navbar-nav {
 	background:black;
 	border: 10px solid black;
 	display: inline-block;
-}
-
-.nav-:visited {
-	color:red;
-}
-
-.nav-item:hover {
-	background:white;
+	border-radius: 5px;
 }
 
 .nav-item:active {
 	color:white;
+}
+
+#navTitle {
+	color: white;
 }
