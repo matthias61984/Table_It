@@ -18,7 +18,7 @@
   }
   
   .pass::after {
-    content: "\f165";
+    content: "<";
   }
   
   .pick {
@@ -27,7 +27,7 @@
   }
   
   .pick::after {
-    content: "\f164";
+    content: ">";
   }
   
   .pick:hover::after, .pass:hover::after {

@@ -16,7 +16,7 @@ function Home() {
       <Container style={{ marginTop: 30 }}>
         <Row>
           <Col size="md-12">
-            <h1>Welcome To TabeIt!</h1>
+            <h1>Welcome To TableIt!</h1>
           </Col>
         </Row>
       </Container>

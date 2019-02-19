@@ -83,8 +83,8 @@ render() {
     <Navbar />
     <div className="container">
       {this.state.cuisines.map(cuis => (
-        <div>
-            <button key = {cuis.id} onClick = {(e) => this.onClickHandler(e , cuis.type)}> {cuis.type} </button>
+        <div className="cuisBtnDiv">
+            <button className="btn btn-info" key = {cuis.id} onClick = {(e) => this.onClickHandler(e , cuis.type)}> {cuis.type} </button>
         </div>
       ))
 
@@ -93,13 +93,15 @@ render() {
       <div className="container">
       {this.state.faveArray.map(item => (
         <div className="list-group-item row favdiv animated bounceInRight" key={item.id}>
-          <img src={item.featured_image} alt="Restaurant hasn't provided a featured image!" className="offset-md-1 col-md-2"></img>
-          <div className="col">
-            <p>Restaurant Name: {item.name}</p>
-            <p>Address: {item.location.address}</p>
-            <p>Cuisine: {item.cuisines}</p>
-            <p>Average price for two: {item.average_cost_for_two}</p>
-            <p>Rating: {item.user_rating.aggregate_rating}</p>
+          <div className="row">
+            <img src={item.featured_image} alt="Restaurant hasn't provided a featured image!" className="offset-md-1 col-md-2 col-sm-12 favImg"></img>
+            <div className="offset-md-2 col-md-5">
+              <h5><strong>{item.name}</strong></h5>
+              <p>Address: {item.location.address}</p>
+              <p>Cuisine: {item.cuisines}</p>
+              <p>Average price for two: ${item.average_cost_for_two}</p>
+              <p>Rating: {item.user_rating.aggregate_rating}</p>
+            </div>
           </div>
         </div>
       ))}

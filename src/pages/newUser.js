@@ -77,7 +77,7 @@ class newUser extends Component {
               type = "text"
               placeholder = "Email"
               />
-          <button onClick = {this.handleFormSubmit}> Create New User </button>
+          <button onClick = {this.handleFormSubmit} className="btn btn-success"> Create New User </button>
           <a href = "/" className="createLink"> Already a user ? </a>
         </form>
         </div>
