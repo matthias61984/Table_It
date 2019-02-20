@@ -5,7 +5,7 @@ module.exports = {
     dbUser
       .find({username : req.params.username})
       .then(dbModel => res.json(dbModel[0]))
-      .catch(err => {res.status(422).json(err); console.log(err)});
+      .catch(err => {res.status(422).json(err);});
   },
   findById: function(req, res) {
     dbUser
@@ -14,7 +14,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log(req.body)
     dbUser
       .create({
         username : req.body.username,
@@ -42,6 +41,11 @@ module.exports = {
       .findById({ _id: req.params.id })
       .then(dbModel => res.json(dbModel.favorites))
       .catch(err => res.status(422).json(err));
+  },
+  RemoveFavorite : function(req , res) {
+    dbUser
+      .findOneAndUpdate({ _id: req.params.id } , { favorites : req.body})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
-
 };

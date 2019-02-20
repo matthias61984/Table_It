@@ -9,7 +9,7 @@ import Api from "../utils/Api";
 
 class Login extends Component {
    constructor(props){
-     super(props);console.log(this);
+     super(props);
      this.handleFormSubmit = this.handleFormSubmit.bind(this);
    }
    state = {
@@ -17,7 +17,12 @@ class Login extends Component {
      password : "",
    };
 
-   
+
+   componentDidMount()
+   {
+     localStorage.setItem("userID" , null);
+   };
+
    handleInputChange = event => {
      let value = event.target.value;
      const name = event.target.name;
@@ -47,9 +52,6 @@ class Login extends Component {
         user.id = data._id
         if(user)
         {
-   
-          console.log(user);
-          console.log(this.state);
           if(user.password === that.state.password)
           {
             localStorage.setItem("userID" , user.id);
@@ -66,10 +68,6 @@ class Login extends Component {
         }
    
       });
-      
-      // this.setState({
-      //   password : ""
-      // });
     
    };
 

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Navbar from "../components/Navbar";
-import Favcard from "../components/Favcard";
 import Api from "../utils/Api";
 
 
@@ -15,10 +14,11 @@ class Favorites extends Component {
   };
 
 componentDidMount() {
-  if(localStorage.getItem("userID") === null)
+  if(localStorage.getItem("userID") === null || localStorage.getItem("userID") === "null")
   {
     this.props.history.push('/');
   }
+  else{
   Api.getFavorites(localStorage.getItem("userID")).then( ({data}) => {
     for(var i = 0; i < data.length; i++) {
     Api.getRestaurantByID(data[i].resId).then(({data}) => {
@@ -40,6 +40,7 @@ componentDidMount() {
     });
     }
   })
+  }
 };
 
 onClickHandler(event , type) {
@@ -75,7 +76,21 @@ onClickHandler(event , type) {
       })}
     })
   }
-} 
+}
+
+onRemoveHandler(e , id) {
+  e.preventDefault();
+  let Favs = [];
+  const intId = parseInt(id);
+      const userFavs = this.state.faveArray.filter((value , index , arr) => {return !(value.R.res_id === intId)})
+      this.setState({
+        faveArray : userFavs
+      });
+  userFavs.forEach(fav => {
+    Favs = Favs.concat({resId : fav.R.res_id});
+  })
+  Api.removeFavorites(localStorage.getItem("userID") , Favs);
+}
 
 render() {
   return(
@@ -101,6 +116,7 @@ render() {
               <p>Cuisine: {item.cuisines}</p>
               <p>Average price for two: ${item.average_cost_for_two}</p>
               <p>Rating: {item.user_rating.aggregate_rating}</p>
+              <button onClick = {(e) => this.onRemoveHandler(e , item.id)}> X </button>
             </div>
           </div>
         </div>
