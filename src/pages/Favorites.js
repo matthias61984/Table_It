@@ -116,7 +116,7 @@ render() {
               <p>Cuisine: {item.cuisines}</p>
               <p>Average price for two: ${item.average_cost_for_two}</p>
               <p>Rating: {item.user_rating.aggregate_rating}</p>
-              <button onClick = {(e) => this.onRemoveHandler(e , item.id)}> X </button>
+              <button className="btn btn-danger" onClick = {(e) => this.onRemoveHandler(e , item.id)}> Remove </button>
             </div>
           </div>
         </div>
