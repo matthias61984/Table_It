@@ -115,6 +115,7 @@ render() {
               <p>Cuisine: {item.cuisines}</p>
               <p>Average price for two: ${item.average_cost_for_two}</p>
               <p>Rating: {item.user_rating.aggregate_rating}</p>
+              <a href = {item.url} className="createLink"> More info </a>
               <button className="btn btn-danger" onClick = {(e) => this.onRemoveHandler(e , item.id)}> Remove </button>
             </div>
           </div>
