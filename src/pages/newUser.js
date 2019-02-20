@@ -69,7 +69,7 @@ class newUser extends Component {
               name = "password"
               onChange = {this.handleInputChange}
               type = "password"
-              placeholder = "Password"
+              placeholder = "Password (min of 6)"
               />
 
             <input
