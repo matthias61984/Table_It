@@ -8,7 +8,6 @@ class Favorites extends Component {
   state = {
     faveArray: [],
     cuisines : [{
-      id : 0,
       type : "All"
     }]
   };
@@ -29,9 +28,9 @@ componentDidMount() {
       const cuis = data.cuisines.split(", ");
       for(var i = 0; i < cuis.length; i++)
       {
-        if(!(this.state.cuisines.includes(cuis[i])))
+        if(!(this.state.cuisines.includes({type : cuis[i]})))
         {
-          const newCuis = this.state.cuisines.concat({id : cuis.length, type : cuis[i]});
+          const newCuis = this.state.cuisines.concat({type : cuis[i]});
           this.setState({
             cuisines : newCuis
           });
@@ -99,7 +98,7 @@ render() {
     <div className="container">
       {this.state.cuisines.map(cuis => (
         <div className="cuisBtnDiv">
-            <button className="btn btn-info" key = {cuis.id} onClick = {(e) => this.onClickHandler(e , cuis.type)}> {cuis.type} </button>
+            <button className="btn btn-info" key = {cuis.type} onClick = {(e) => this.onClickHandler(e , cuis.type)}> {cuis.type} </button>
         </div>
       ))
 

@@ -29,10 +29,11 @@ class newUser extends Component {
              username : this.state.username,
              password : this.state.password,
              email : this.state.email
-         }).catch(function(err) {
+         }).then(user => alert(`New User Created`)).catch(function(err) {
             console.log(err);
              alert(err);
          });
+         this.props.history.push('/');
      }
      else
      {
@@ -43,7 +44,8 @@ class newUser extends Component {
        password : "",
        email : "",
      });
-   };
+     
+        };
 
    render()
    {
