@@ -23,11 +23,11 @@ class Discover extends Component {
 
   componentDidMount() {
     
-    if(localStorage.getItem("userID") === null)
+    if(localStorage.getItem("userID") === null || localStorage.getItem("userID") === "null")
     {
       this.props.history.push('/');
     }
-    if(navigator.geolocation)
+    else if(navigator.geolocation)
     {
       navigator.geolocation.getCurrentPosition(position => {
         const pos = {
@@ -60,7 +60,6 @@ class Discover extends Component {
     newState.count++;
     if (btnType === "pick") {
       newState.favorited = true;
-      //console.log(this.state.userID , this.state.restArray[this.state.count].R.res_id);
       Api.updateFavorites(this.state.userID , {resId : this.state.restArray[this.state.count].R.res_id});
     } else {
       newState.favorited = false;

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Navbar from "../components/Navbar";
-import Favcard from "../components/Favcard";
 import Api from "../utils/Api";
 
 
@@ -9,16 +8,16 @@ class Favorites extends Component {
   state = {
     faveArray: [],
     cuisines : [{
-      id : 0,
       type : "All"
     }]
   };
 
 componentDidMount() {
-  if(localStorage.getItem("userID") === null)
+  if(localStorage.getItem("userID") === null || localStorage.getItem("userID") === "null")
   {
     this.props.history.push('/');
   }
+  else{
   Api.getFavorites(localStorage.getItem("userID")).then( ({data}) => {
     for(var i = 0; i < data.length; i++) {
     Api.getRestaurantByID(data[i].resId).then(({data}) => {
@@ -29,9 +28,9 @@ componentDidMount() {
       const cuis = data.cuisines.split(", ");
       for(var i = 0; i < cuis.length; i++)
       {
-        if(!(this.state.cuisines.includes(cuis[i])))
+        if(!(this.state.cuisines.includes({type : cuis[i]})))
         {
-          const newCuis = this.state.cuisines.concat({id : cuis.length, type : cuis[i]});
+          const newCuis = this.state.cuisines.concat({type : cuis[i]});
           this.setState({
             cuisines : newCuis
           });
@@ -40,6 +39,7 @@ componentDidMount() {
     });
     }
   })
+  }
 };
 
 onClickHandler(event , type) {
@@ -75,7 +75,21 @@ onClickHandler(event , type) {
       })}
     })
   }
-} 
+}
+
+onRemoveHandler(e , id) {
+  e.preventDefault();
+  let Favs = [];
+  const intId = parseInt(id);
+      const userFavs = this.state.faveArray.filter((value , index , arr) => {return !(value.R.res_id === intId)})
+      this.setState({
+        faveArray : userFavs
+      });
+  userFavs.forEach(fav => {
+    Favs = Favs.concat({resId : fav.R.res_id});
+  })
+  Api.removeFavorites(localStorage.getItem("userID") , Favs);
+}
 
 render() {
   return(
@@ -84,7 +98,7 @@ render() {
     <div className="container">
       {this.state.cuisines.map(cuis => (
         <div className="cuisBtnDiv">
-            <button className="btn btn-info" key = {cuis.id} onClick = {(e) => this.onClickHandler(e , cuis.type)}> {cuis.type} </button>
+            <button className="btn btn-info" key = {cuis.type} onClick = {(e) => this.onClickHandler(e , cuis.type)}> {cuis.type} </button>
         </div>
       ))
 
@@ -101,6 +115,8 @@ render() {
               <p>Cuisine: {item.cuisines}</p>
               <p>Average price for two: ${item.average_cost_for_two}</p>
               <p>Rating: {item.user_rating.aggregate_rating}</p>
+              <a href = {item.url} className="createLink"> More info </a>
+              <button className="btn btn-danger" onClick = {(e) => this.onRemoveHandler(e , item.id)}> Remove </button>
             </div>
           </div>
         </div>

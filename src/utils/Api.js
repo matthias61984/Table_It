@@ -9,18 +9,6 @@ const config = {
 
 axios.defaults.headers.common['user-key'] = '4ef06bf14aba6e0bcd3f7668a7b86e17'
 
-const getUrl = function(endPoint) {
-    if(process.env.NODE_ENV === "production") {
-        return endPoint;
-    }
-    console.log(endPoint);
-    return endPoint ;
-    // else
-    // {
-    //     return "http://localhost:3001" + endPoint
-    // }
-}
-
 
 
 
@@ -62,7 +50,7 @@ export default {
     },
 
     createUser : function(userData) {
-        return axios.post(getUrl("/api/users") , userData).then(res => res);
+        return axios.post("/api/users" , userData).then(res => res);
     },
 
     updateFavorites : function(id , userData) {
@@ -72,6 +60,9 @@ export default {
     getFavorites : function(id) {
         return axios.get("/api/users/favorites/" + id);
 
+    },
+    removeFavorites : function(id , userData) {
+        return axios.put("/api/favorites/" + id , userData);
     }
 
 }
